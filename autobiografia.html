@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Autobiografía | Adrian Llamas</title>
+  <meta name="description" content="Autobiografía personal - Estudiante de Ingeniería de Sistemas">
+  <style>
+    :root {
+      --bg: #12121a;
+      --bg-alt: #1b1b26;
+      --text: #e8e8f0;
+      --muted: #a8a8bd;
+      --accent: #b48cf2;
+      --accent-2: #7c5cd6;
+      --border: #2c2c3a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header.site-header {
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+    header.site-header h1 {
+      margin: 0 0 0.3rem 0;
+      font-size: 2.4rem;
+    }
+    header.site-header p {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #f1e9ff;
+    }
+    nav {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0;
+      padding: 0.7rem 1rem;
+      justify-content: center;
+    }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+    nav a:hover { background: var(--accent-2); }
+    main {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem 3rem;
+    }
+    section {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem 1.8rem;
+      margin: 2rem 0;
+    }
+    h2 {
+      color: var(--accent);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+    h3 { color: var(--muted); }
+    figure { margin: 1rem 0; text-align: center; }
+    figure img {
+      max-width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    figcaption {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+    ul, ol { padding-left: 1.4rem; }
+    a { color: var(--accent); }
+    dl dt { font-weight: bold; color: var(--accent); margin-top: 0.6rem; }
+    dl dd { margin: 0.2rem 0 0.4rem 0; color: var(--muted); }
+    footer {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    footer a { color: var(--accent); }
+    address { font-style: normal; }
+    h4 { color: var(--muted); margin-bottom: 0.6rem; }
+    .photo-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
+      margin: 1rem 0;
+    }
+    .photo-circle {
+      margin: 0;
+      width: 140px;
+      text-align: center;
+    }
+    .photo-circle img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent-2);
+      cursor: pointer;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .photo-circle img:hover {
+      transform: scale(1.12);
+      border-color: var(--accent);
+    }
+    .gallery-hint {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: -0.4rem;
+    }
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      cursor: zoom-out;
+    }
+    .lightbox-overlay.active {
+      display: flex;
+    }
+    .lightbox-overlay img {
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 10px;
+      border: 2px solid var(--accent);
+      cursor: default;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.5rem;
+      color: var(--text);
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .photo-circle figcaption {
+      margin-top: 0.5rem;
+    }
+    #mirada-especial blockquote {
+      margin: 1rem 0 0 0;
+      padding: 0.2rem 1.5rem;
+      border-left: 4px solid var(--accent);
+      font-style: italic;
+      color: var(--text);
+    }
+    #mirada-especial blockquote p {
+      margin: 0.8rem 0;
+    }
+    #mirada-especial blockquote footer {
+      background: none;
+      border: none;
+      padding: 0;
+      margin-top: 0.8rem;
+      text-align: left;
+      font-style: normal;
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>Adrian Felipe Llamas Quintero</h1>
+    <p>Estudiante de Ingeniería de Sistemas &mdash; Universidad de la Costa (CUC), Barranquilla</p>
+  </header>
+
+  <nav aria-label="Navegación principal">
+    <ul>
+      <li><a href="#quien-soy">Quién soy</a></li>
+      <li><a href="#mi-historia">Mi historia</a></li>
+      <li><a href="#mi-formacion">Mi formación</a></li>
+      <li><a href="#mis-intereses">Mis intereses</a></li>
+      <li><a href="#vida-actual">Vida actual</a></li>
+      <li><a href="#mirada-especial">Mirada especial</a></li>
+      <li><a href="#mi-futuro">Mi futuro</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- 1. Quién soy -->
+    <section id="quien-soy">
+      <h2>1. Quién soy</h2>
+      <dl>
+        <dt>Nombre</dt>
+        <dd>Adrian Felipe Llamas Quintero</dd>
+        <dt>Lugar de nacimiento</dt>
+        <dd>Barranquilla, Atlántico, Colombia</dd>
+        <dt>Ocupación actual</dt>
+        <dd>Estudiante de Ingeniería de Sistemas en la Universidad de la Costa (CUC)</dd>
+      </dl>
+      <p>
+        Soy un joven de 20 años, que se considera bastante curioso, carismatico, gracioso (para mi gente cercana nada mas).
+        La verdad siempre me he quedado al hacer autobiografias, no se que decir de mi ademas de lo basico por que a veces
+        no me detengo a pensar quien soy? a donde voy? o que estoy haciendo? soy una persona que le gusta aprender sobre la marcha
+        entonces la verdad no tengo mucho que decir sobre mi. soy alguien basico 
+      </p>
+    </section>
+
+    <!-- 2. Mi historia -->
+    <section id="mi-historia">
+      <h2>2. Mi historia</h2>
+
+      <h3>Infancia</h3>
+      <p>
+        pues yo naci en Barranquilla pero por alguna razon a mis padres les gusto un pueblo que se llama Palmar De Varela
+        entonces nos mudamos cuando yo tenia unos 2 años, asi que practicamente creci alla hasta que cumpli los 17 y volvi a vivir en Barranquilla.
+        Pues de mi infancia no puedo decir mucho a la edad de 4 años ingrese a transicion que es como el primer curso de primaria luego de hacer
+        un examen y pasarlo por que necesitaba tener 5 para entrar, la verdad me gustaba el colegio, era bastante social, habalaba y jugaba con Todos
+        no tuve la mejor infancia pero no me quejo, era feliz.
+      </p>
+
+      <h3>Familia</h3>
+      <p>
+        Tengo una gran familia, que me quiere mucho, me apoya bastante y que cada vez que podemos nos reunimos para salir o tener reuniones familiares.
+        ya que vivi en casa de mis padres hasta los 16/17 pero me mude a Barranquilla a casa de mis abuelos por el transporte y el estudio.
+        la verdad es que yo amo mucho a mi familia y aunque no lo demuestre, yo haria muchas cosas por cada uno de ellos
+      </p>
+
+      <h3>Momentos importantes</h3>
+      <ol>
+        <li>Graduarme de Bachillerato luego de tener unos increibles profesores que me enseñaron muchas cosas</li>
+        <li>Participar en un proyecto de programacion con un profesor muy querido del bachillerato para contribuir con un problematica</li>
+        <li>Ingresar a la Universidad de la costa para estudiar Ingeniería de sistemas, alcanzar Septimo semestre de la carrera y seguir</li>
+      </ol>
+    </section>
+
+    <section id="mi-formacion">
+      <h2>3. Mi formación</h2>
+
+      <h3>Estudios</h3>
+      <p>Actualmente curso Ingeniería de Sistemas en la Universidad de la Costa (CUC), en Barranquilla.</p>
+
+      <h3>Cursos y aprendizajes importantes</h3>
+      <ul>
+        <li>Bachiller</li>
+        <li>Tecnicos certificados en el servicio nacional de aprendizaje SENA (Administracion, Robotica, Contabilidad, Emprendimiento, Metodologia de la investigacion)</li>
+      </ul>
+    </section>
+
+    <!-- 4. Mis intereses -->
+    <section id="mis-intereses">
+      <h2>4. Mis intereses</h2>
+
+      <h3>Tecnología y desarrollo</h3>
+      <p>
+        La verdad es que me apasiona bastante la tecnologia, por eso escogi estudiar Ingenieria de sistemas
+        por que uno se sorprende de lo que puede llegar a crear con unas lineas de codigos, unas conexiones y demas cosas que uno puede aprender aca.
+        yo le tome gusto cuando mi profesor de matematicas me sugirio formar un grupo de robotica en 8° de bachillerato
+        de ahi salieron muchas cosas y fue cuando conoci la Universidad, conoci laboratorios, profesores, otras instalaciones
+        y yo pense de una que yo queria entrar a estudiar ahi, me gusto demasiado. 
+      </p>
+
+      <h3>Videojuegos</h3>
+      <p>
+        Tambien como cualquier chico soy muy amante a los videojuegos, la verdad juego de todo tipo y soy de esos que les gusta 
+        hacer el juego completo, que tipo agarrar todo items del mapa, cada caja, cada moneda o cada reto. mi pasion por los juegos comenzo
+        a la edad de unos 9 o 10 años como tal, recuerdo que jugue por primera vez el Legend of Zelda:Ocarina of time y fue lo mejor de mi vida en el momento.
+        ya ahora pues con el avance de las tecnologias y demas, pues ya he experimentado otro tipo de clases de juegos, con mayores graficos, mejor historia, mas inmersion y cosas.
+        La verdad es que yo pienso que aunque yo me haga viejo seguire amando los videojuegos y seguire disfrutrando jugar con amigos o en un futuro con mis hijos.
+      </p>
+      <h3>Generos de videojuegos favoritos</h3>
+      <ul>
+        <li>Aventura</li>
+        <li>Roguelike</li>
+        <li>Sandbox</li>
+        <li>Soul</li>
+      </ul>
+
+      <h3>Otros intereses</h3>
+      <p>
+        Ademas de lo anterior siempre he tenido un interes por las fotografias y el dibujo, a la edad de 13-14 años me la pasaba dibujando muchas cosas
+        bosques, casas del vecindario que se veian bonitas, atardeceres, caricaturas o personajes de anime. Me gustaba bastante pasar las tardes dibujando cuando no tenia nada que hacer o alguien con quien jugar, pero con el tiempo lo deje
+        pero paso a convertirse en un interes por las fotos, tenia una camara digital de mi padre y andaba con ella para todos lados tomando fotos del paisaje, casas, lugares y asi, lo deje un tiempo y cuando mi madre me regalo un celular con una camara estupenda
+        volvi a retomarlo, a tomar fotos del cielo, de la Universidad por la noche, entre otras cosas. Ahora no lo hago por que perdi ese celular pero en algun momento me gustaria retomarlo como un hobby pero con una camara un poco profesional
+        que de verdad me deje plasmar sentimientos y pensamientos a travez de una foto. 
+      </p>
+      <h4>Algunas de mis fotos</h4>
+      <p class="gallery-hint">Haz clic en una foto para ampliarla.</p>
+      <div class="photo-gallery">
+        <figure class="photo-circle">
+          <img src="foto1.jpg" alt="Foto tomada por Adrian - describe aquí qué muestra" onclick="openLightbox(this.src, this.alt)">
+          <figcaption>El destello del mediodía</figcaption>
+        </figure>
+        <figure class="photo-circle">
+          <img src="foto2.jpg" alt="Foto tomada por Adrian - describe aquí qué muestra" onclick="openLightbox(this.src, this.alt)">
+          <figcaption>Última luz antes de la noche</figcaption>
+        </figure>
+        <figure class="photo-circle">
+          <img src="foto3.jpg" alt="Foto tomada por Adrian - describe aquí qué muestra" onclick="openLightbox(this.src, this.alt)">
+          <figcaption>Gris antes de la lluvia</figcaption>
+        </figure>
+        <figure class="photo-circle">
+          <img src="foto4.jpg" alt="Foto tomada por Adrian - describe aquí qué muestra" onclick="openLightbox(this.src, this.alt)">
+          <figcaption>El Susurro de la Brisa</figcaption>
+        </figure>
+        <figure class="photo-circle">
+          <img src="foto5.jpg" alt="Foto tomada por Adrian - describe aquí qué muestra" onclick="openLightbox(this.src, this.alt)">
+          <figcaption>El Abrazo del Cielo y la Tierra</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 5. Mi vida actual -->
+    <section id="vida-actual">
+      <h2>5. Mi vida actual</h2>
+      <p>
+        Actualmente pues siempre estoy tratando de ser mejor persona, tratando de aprender en profundizacion lo que es la programacion, entre otras.
+        la verdad es que me gusta aprender sobre la teoria que me dan en la U pero soy mas de lo practico, de agarrar la compu, empezar a ver tutoriales, meterme por aqui y tirarme por alla para hacer algo.
+        por eso siempre trato de hacer proyectos personales, ya sean pequeños o algo un poco mas complejo pero siempre estoy tratando de hacer algo. Tambien combino lo que se de la carrera con videojuegos que los tomo como pequeños
+        pastiempos para pasar el rato y para distraerme un poco.
+      </p>
+      <h3>Pasatiempos</h3>
+      <ul>
+        <li>Modding de Videojuegos</li>
+        <li>Servidor dedicados</li>
+        <li>Configuración de redes LAN privadas para interconexión y juego con amigos</li>
+        <li>Personalización de escritorio</li>
+      </ul>
+
+      <h3>De pasatiempo a aprendizaje técnico</h3>
+      <p>
+        Aunque a simple vista parecen solo pasatiempos. El modding de videojuegos como Genshin Impact me ha llevado a entender cómo se intercepta la comunicación entre un programa y la tarjeta gráfica, 
+        además de depurar errores relacionados con el manejo de memoria y texturas. Administrar mi propio servidor (por ejemplo Minecraft o otros juegos) me ha enseñado sobre gestión de dependencias entre versiones y la diferencia entre lo que debe correr en el servidor y lo que corre solo en el cliente. 
+        Y montar redes LAN privadas para jugar con amigos me ha dado práctica real con direccionamiento IP, DHCP y solución de problemas de conectividad, justo los temas que veo en mis cursos de redes. 
+        Al final, estos pasatiempos se han convertido en una forma de reforzar, de manera práctica, lo que estoy aprendiendo en Ingeniería de Sistemas.
+      </p>
+    </section>
+
+    <!-- Una mirada especial -->
+    <section id="mirada-especial">
+      <h2>Una mirada especial</h2>
+      <p>A veces es difícil describirse a uno mismo, así que quise dejar que alguien cercano a mí contara, con sus propias palabras, quién soy desde su perspectiva.</p>
+      <blockquote>
+        <p>A mis ojos, él es una persona con un corazón muy sincero. No necesita esforzarse demasiado para demostrar lo que siente, porque la forma en la que trata a los demás habla por sí sola.</p>
+        <p>Siempre encuentra la manera de hacer reír a las personas y de hacer que el ambiente se sienta más ligero. También se fija mucho en los pequeños detalles; cosas que otros pasarían por alto, él las nota, las recuerda y les da importancia.</p>
+        <p>Tiene un alma muy valiosa y muchísimo para ofrecer. A pesar de haber pasado por momentos difíciles, sigue teniendo esa capacidad de preocuparse por los demás, sonreír y hacer sentir bien a quienes quiere.</p>
+        <p>No siempre dice todo lo que lleva dentro, pero suele demostrarlo con sus acciones.</p>
+        <p>Y si tuviera que describirlo con una sola palabra, probablemente elegiría hogar. Tiene algo que transmite tranquilidad y hace que puedas ser tú mismo sin sentir que tienes que fingir.</p>
+        <p>Para mí, es mucho más de lo que probablemente cree ser: alguien con un corazón enorme, una mente llena de pensamientos y una forma muy especial de hacer sentir importantes a quienes lo rodean.</p>
+        <p>Quizá él diga que no sabe describirse, pero yo sí tengo bastante claro quién es a mis ojos: alguien que vale muchísimo la pena conocer, querer y conservar.</p>
+        <footer><cite>&mdash; Una persona especial</cite></footer>
+      </blockquote>
+    </section>
+
+    <!-- 6. Mi futuro -->
+    <section id="mi-futuro">
+      <h2>6. Mi futuro</h2>
+      <p>
+       Siendo sincero se que quiero especializarme como ingeniero desarrollador de Backend, eso lo tengo muy claro, para paginas web, aplicaciones, sistemas, etc.
+       pero la verdad es que no estoy cerrado a tener conocimientos basicos de otras areas solo por saber como funcionan y de pronto si en un momento las necesito no tener que aprender sobre eso de prisa.
+       pero en si el futuro no sabemos, vivo el hoy, disfruto cada minuto y me alegro cada dia por tener otro dia mas, ya sea para divertirme, aprender, pasar el tiempo o hacer cualquier cosa. pero siempre agradecido por eso 
+      </p>
+      <p>
+        Puedes conocer más sobre la Universidad de la Costa aquí:
+        <a href="https://www.cuc.edu.co" target="_blank" rel="noopener noreferrer">Universidad de la Costa (CUC)</a>.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Adrian Llamas. Todos los derechos reservados.</p>
+    <address>
+      Contacto: <a href="mailto:allamas@cuc.edu.co">allamas@cuc.edu.co</a>
+    </address>
+    <p>Sitio creado como actividad académica &mdash; Universidad de la Costa (CUC)</p>
+  </footer>
+  <!-- Lightbox para ampliar fotos -->
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" aria-label="Cerrar">&times;</span>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script>
+    function openLightbox(src, alt) {
+      const overlay = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = src;
+      img.alt = alt;
+      overlay.classList.add('active');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
